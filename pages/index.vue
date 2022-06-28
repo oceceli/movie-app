@@ -1,11 +1,17 @@
 <template>
-    <div class="bg-red-300">
-        {{ test }}
+    <div class="flex flex-wrap gap-5">
+        <movie-card />
+        <movie-card />
+        <movie-card />
+        <movie-card />
+        <movie-card />
+        <movie-card />
+        <movie-card />
     </div>
 </template>
 
 
 <script setup>
-    const test = ref('içerik');
-    
+import movieCardVue from '~~/components/movieCard.vue';
+const test = ref('içerik');
 </script>
