@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="inline-block">
         <img :src="iconPath" :class="iconClass + ' h-5'">
     </div>
 </template>
@@ -11,6 +11,6 @@
     });
 
     const iconPath = computed(() => {
-        return `assets/icon/${props.icon}`;
+        return `/assets/icon/${props.icon}`;
     });
 </script>

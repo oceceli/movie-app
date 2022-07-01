@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="h-screen flex flex-col">
     <topbar />
-    <div class="p-4 border h-full">
+    <div class="flex-1">
       <slot />
     </div>
   </div>

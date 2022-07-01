@@ -12,6 +12,6 @@
 
 <script setup>
 const props = defineProps({
-    score: String
+    score: Number
 });
 </script>
