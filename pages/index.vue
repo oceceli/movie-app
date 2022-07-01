@@ -14,31 +14,27 @@
 
 
 <script setup>
-import api from '@/composables/ApiService'
+import api from '~~/composables/ApiService';
+import Filters from '~~/composables/Filters';
+import State from '~~/composables/State';
 
 const route = useRoute();
 
-const data = ref({});
-const movies = ref([]);
-
-const pageNumber = ref(route.query.page ? route.query.page : '');
+const data = ref(State.getData());
+const movies = ref(State.getMovies());
 
 onMounted(() => {
-    fetchData();
+    api.fetchData();
 })
 
-const fetchData = () => {
-    pageNumber.value = route.query.page;
-    api.getDiscoverMovies('?page=' + pageNumber.value)
-        .then(res => {
-            data.value = res
-            console.log(data.value)
-            movies.value = res.results
-        });
-}
 
-watch(route, (to, prev) => {
-    fetchData();
+watch(route, () => {
+    Filters.queryParams.set('page', route.query.page ?? 1)
+    api.fetchData();
+})
+
+watch(State.getSearch(), (now) => {
+    return api.fetchData();
 })
 
 
