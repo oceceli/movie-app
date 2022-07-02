@@ -4,7 +4,7 @@ import State from './State';
 
 const base_url = "https://api.themoviedb.org/3";
 
-const fetchDynamic = (path, additionalQuery) => {
+const fetchDynamic = (path, additionalQuery = '') => {
 
     const target = base_url + path + '?' + Filters.queryParams + '&' + additionalQuery;
     
@@ -60,6 +60,7 @@ const getRecommended = (movieID) => {
     return fetchDynamic(`/movie/${movieID}/recommendations`)
 }
 const getSimilarMovies = (movieID) => {
+    // console.log(movieID);
     return fetchDynamic(`/movie/${movieID}/similar`)
 }
 const getReviews = (movieID) => {
@@ -91,5 +92,5 @@ const fullfillData = (res) => {
 
 
 export default {
-    getDiscoverMovies, showMovie, getGenres, getSearch, fetchData, getLangs,
+    getDiscoverMovies, showMovie, getGenres, getSearch, fetchData, getLangs, getSimilarMovies,
 }

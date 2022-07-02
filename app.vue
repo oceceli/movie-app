@@ -20,5 +20,8 @@ useHead({
   meta: [
     { name: 'description', content: 'Aradığın film' }
   ],
+  bodyAttrs: {
+    behavior: 'smooth', block: 'start',
+  }
 })
 </script>

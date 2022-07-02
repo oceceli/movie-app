@@ -1,6 +1,6 @@
 <template>
-    <section class="bg-gray-100 shadow rounded-xl relative">
-        <div class="md:flex gap-2">
+    <section class="relative">
+        <div class="md:flex gap-2 bg-gray-100 shadow rounded-xl">
             <div class="">
                 <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path" alt=""
                     class="md:rounded-l-xl md:rounded-tr-none rounded-t-xl object-cover h-full w-full">
@@ -60,6 +60,12 @@
         <div class="absolute top-0 right-0 -m-5 flex items-start">
             <div class="px-2 mt-3 mr-1 bg-purple-700 text-white rounded-xl">{{ movie.vote_count}} oy</div>
             <score-circle :score="movie.vote_average" />
+        </div>
+
+        <div class="w-9/12 md:w-6/12 mx-auto">
+            <div class="px-2 pb-1 pt-2 flex justify-center items-center border rounded-b-lg shadow">
+                <scorestars :score="movie.vote_average" />
+            </div>
         </div>
     </section>
 </template>
