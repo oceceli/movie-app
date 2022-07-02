@@ -40,6 +40,8 @@ const getData = () => {
 }
 
 
+
+
 export default {
     setSearch, getSearch, getPage, setPage, setMovies, getMovies, setData, getData,
 }

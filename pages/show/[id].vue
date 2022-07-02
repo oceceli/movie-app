@@ -1,5 +1,5 @@
 <template>
-    <section class="px-8 bg-slate-50 h-full pt-7">
+    <section class="container mx-auto px-6 md:px-8 bg-slate-50 h-full pt-7">
 
 
         <section class="pb-8 md:flex justify-between">
@@ -36,9 +36,13 @@
 
 <script setup>
 import api from '~~/composables/ApiService'
+
 const route = useRoute();
 
 const movie = ref({});
+
+const title = ref('');
+useHead({title: title})
 
 onMounted(() => {
     fetchMovie();
@@ -49,6 +53,7 @@ const fetchMovie = () => {
         .then(res => {
             movie.value = res
             console.log(movie.value);
+            title.value = movie.value.title
         })
 }
 

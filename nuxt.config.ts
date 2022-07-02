@@ -12,5 +12,5 @@ export default defineNuxtConfig({
     alias: {
         // 'images': resolve(__dirname, './assets/images'),
         '@assets': resolve(__dirname, './assets'),
-    }
+    },
 })

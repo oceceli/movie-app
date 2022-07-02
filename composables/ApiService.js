@@ -39,11 +39,11 @@ const getSearch = () => {
 
 
 const fetchData = () => {
-    if(State.getSearch().value.length > 0) {
+    if(State.getSearch().value.length > 0)
         getSearch().then(fullfillData)
-    } else {
+    else 
         getDiscoverMovies().then(fullfillData);
-    }
+    
 }
 
 
