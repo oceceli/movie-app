@@ -1,13 +1,16 @@
 <template>
-    <div>
-        <div class="flex flex-col gap-10 items-center container mx-auto mt-12">
+    <div class="md:flex md:gap-2 mt-6">
+        <section class="w-3/12">
+            <filter-bar />
+        </section>
+        <section class="flex flex-col gap-10 items-center container mx-auto ">
             <div class="flex flex-wrap gap-4 justify-center">
                 <movie-card v-for="movie in movies" :id="movie.id"
                     :img="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path" :overview="movie.overview"
                     :title="movie.title" :score="movie.vote_average" />
             </div>
             <paginator :currentPage="data.page" :totalPages="data.total_pages" />
-        </div>
+        </section>
     </div>
 </template>
 

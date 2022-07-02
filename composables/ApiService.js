@@ -4,8 +4,9 @@ import State from './State';
 
 const base_url = "https://api.themoviedb.org/3";
 
-const fetchDynamic = (target_url) => {
-    const target = base_url + target_url + '?' + Filters.queryParams;
+const fetchDynamic = (path, additionalQuery) => {
+
+    const target = base_url + path + '?' + Filters.queryParams + '&' + additionalQuery;
     
     console.log('ApiService: ' + target)
 
@@ -19,22 +20,57 @@ const fetchDynamic = (target_url) => {
     .catch(err => console.error(err))
 }
 
+
+
 const getDiscoverMovies = () => {
     return fetchDynamic('/discover/movie');
+}
+
+// kullanılmadı
+const getPopularMovies = () => {
+    return fetchDynamic('/movie/popular');
+}
+const getTopRated = () => {
+    return fetchDynamic('/movie/top_rated');
+}
+const getWeeklyTrend = () => {
+    return fetchDynamic('/trending/movie/week'); // day
+}
+
+
+const getSearch = () => {
+    return fetchDynamic('/search/movie');
 }
 
 const showMovie = (id) => {
     return fetchDynamic('/movie/' + id);
 }
 
+
+
 const getGenres = () => {
     return fetchDynamic('/genre/movie/list');
 }
 
-const getSearch = () => {
-    return fetchDynamic('/search/movie');
+// kullanılmadı
+const getLangs = () => {
+    return fetchDynamic('/configuration/languages');
 }
-
+const getRecommended = (movieID) => {
+    return fetchDynamic(`/movie/${movieID}/recommendations`)
+}
+const getSimilarMovies = (movieID) => {
+    return fetchDynamic(`/movie/${movieID}/similar`)
+}
+const getReviews = (movieID) => {
+    return fetchDynamic(`/movie/${movieID}/reviews`)
+}
+const getVideos = (movieID) => {
+    return fetchDynamic(`/movie/${movieID}/videos`)
+}
+const getInTheater = () => {
+    return fetchDynamic(`/movie/now_playing`, 'region=tr')
+}
 
 
 
@@ -55,5 +91,5 @@ const fullfillData = (res) => {
 
 
 export default {
-    getDiscoverMovies, showMovie, getGenres, getSearch, fetchData
+    getDiscoverMovies, showMovie, getGenres, getSearch, fetchData, getLangs,
 }

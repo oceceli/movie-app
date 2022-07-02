@@ -9,7 +9,11 @@ module.exports = {
     "./nuxt.config.{js,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({
+        'wave': "url('@/assets/icon/wave.svg')",
+      })
+    },
   },
   plugins: [],
 }

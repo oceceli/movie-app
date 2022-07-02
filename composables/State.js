@@ -40,8 +40,15 @@ const getData = () => {
 }
 
 
+const genres = ref([]);
+const setGenres = payload => {
+    genres.value = payload;
+}
+const getGenres = () => {
+    return genres;
+}
 
 
 export default {
-    setSearch, getSearch, getPage, setPage, setMovies, getMovies, setData, getData,
+    setSearch, getSearch, getPage, setPage, setMovies, getMovies, setData, getData, setGenres, getGenres,
 }
