@@ -11,12 +11,13 @@
 </template>
 
 <script setup>
-import State from '~~/composables/State';
 
 const search = ref('')
 const showClearButton = ref(false)
 
-onBeforeMount(() => {
+const searchState = useState('search', '')
+
+onMounted(() => {
     const localStorageSearch = localStorage.getItem('search')
     if(localStorageSearch && localStorageSearch.length > 0) {
         search.value = localStorage.getItem('search')
@@ -29,12 +30,13 @@ const clearField = () => {
 
 watch(search, (now) => {
     if(now.length > 0) {
-        navigateTo('/');
+        // navigateTo('/');
         showClearButton.value = true
     } else {
         showClearButton.value = false
     }
-    State.setSearch(now);
+    searchState.value = search.value;
+    // State.setSearch(now);
 })
 
 </script>

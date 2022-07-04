@@ -1,45 +1,68 @@
-import { api_key } from '@/keys' // kök dizine keys.json oluşturulup moviedatabase'den alınan key(v4) konulmalı
 import Filters from './Filters';
 import State from './State';
+import config from '~~/config';
 
-const base_url = "https://api.themoviedb.org/3";
 
 const fetchDynamic = (path, additionalQuery = '') => {
-
-    const target = base_url + path + '?' + Filters.queryParams + '&' + additionalQuery;
-    
+    const target = config.api_base_url + path + '?' + Filters.queryParams + '&' + additionalQuery;
     console.log('ApiService: ' + target)
-
     return fetch(target, {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + api_key
+            'Authorization': 'Bearer ' + config.api_token
         },
     })
-    .then(res => res.json())
-    .catch(err => console.error(err))
+        .then(res => res.json())
+        .catch(err => console.error(err))
 }
+
+// const performFetcha = (path, params = {}, callback = () => {}) => {
+//     if(callback instanceof Function) callback();
+//     return useFetch(() => path, {
+//         baseURL: config.api_base_url,
+//         params: params,
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer ' + config.api_token
+//         },
+//     })
+// }
+
+// const performFetch = (path, params = {}, callback = () => { }) => {
+//     return useLazyAsyncData(path, () => {
+//         if (callback instanceof Function) callback();
+//         return $fetch(path, {
+//             baseURL: config.api_base_url,
+//             params: params,
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': 'Bearer ' + config.api_token
+//             },
+
+//         })
+//     })
+// }
 
 
 
 const getDiscoverMovies = () => {
-    return fetchDynamic('/discover/movie');
+    return fetchDynamic(config.endpoints.discover);
 }
 
 // kullanılmadı
 const getPopularMovies = () => {
-    return fetchDynamic('/movie/popular');
+    return fetchDynamic(config.endpoints.popular);
 }
 const getTopRated = () => {
-    return fetchDynamic('/movie/top_rated');
+    return fetchDynamic(config.endpoints.top_rated);
 }
 const getWeeklyTrend = () => {
-    return fetchDynamic('/trending/movie/week'); // day
+    return fetchDynamic(config.endpoints.weekly_trend); // day
 }
 
 
 const getSearch = () => {
-    return fetchDynamic('/search/movie');
+    return fetchDynamic(config.endpoints.search);
 }
 
 const showMovie = (id) => {
@@ -63,9 +86,9 @@ const getSimilarMovies = (movieID) => {
     // console.log(movieID);
     return fetchDynamic(`/movie/${movieID}/similar`)
 }
-const getReviews = (movieID) => {
-    return fetchDynamic(`/movie/${movieID}/reviews`)
-}
+// const getReviews = (movieID) => {
+//     return fetchDynamic(`/movie/${movieID}/reviews`)
+// }
 const getVideos = (movieID) => {
     return fetchDynamic(`/movie/${movieID}/videos`)
 }
@@ -76,14 +99,12 @@ const getInTheater = () => {
 
 
 const fetchData = () => {
-    if(State.getSearch().value.length > 0)
+    if (State.getSearch().value.length > 0)
         getSearch().then(fullfillData)
-    else 
+    else
         getDiscoverMovies().then(fullfillData);
-    
+
 }
-
-
 const fullfillData = (res) => {
     State.setData(res)
     State.setMovies(res.results)
@@ -94,3 +115,4 @@ const fullfillData = (res) => {
 export default {
     getDiscoverMovies, showMovie, getGenres, getSearch, fetchData, getLangs, getSimilarMovies,
 }
+

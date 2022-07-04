@@ -25,7 +25,7 @@
 
 
 
-        <section class="mt-16 mb-8 flex flex-col gap-6 items-center p-4 ">
+        <section class="mt-20 mb-8 flex flex-col gap-6 items-center">
             <div class="text-3xl font-bold">Benzer Filmler</div>
             <div class="flex flex-wrap gap-4 justify-center pb-10 rounded-lg">
                 <movie-card v-for="similarMovie in similarMovies" :key="similarMovie.id" :movie="similarMovie" />
@@ -53,7 +53,6 @@ const fetchMovie = () => {
     api.showMovie(route.params.id)
         .then(res => {
             movie.value = res
-            console.log(movie.value);
             title.value = movie.value.title
             fetchSimilar()
         })

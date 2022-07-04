@@ -1,5 +1,5 @@
 <template>
-    <section class="relative">
+    <section class="relative group">
         <div class="md:flex gap-2 bg-gray-100 shadow rounded-xl">
             <div class="">
                 <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path" alt=""
@@ -63,18 +63,26 @@
         </div>
 
         <div class="w-9/12 md:w-6/12 mx-auto">
-            <div class="px-2 pb-1 pt-2 flex justify-center items-center border rounded-b-lg shadow">
-                <scorestars :score="movie.vote_average" />
+            <div class="px-2 pb-1 pt-2 flex justify-center items-center border rounded-b-lg">
+                <div>
+                    <scorestars :score="movie.vote_average" />
+                </div>
             </div>
         </div>
     </section>
+    {{ reviews }}
 </template>
 
 <script setup>
 import Helpers from '~~/composables/Helpers';
-defineProps({
+import config from '~~/config';
+const props = defineProps({
     movie: Object,
 })
+
+
+const reviews = await apiService.performFetch('/movie/453395/reviews');
+
 </script>
 
 <style lang="scss" scoped>

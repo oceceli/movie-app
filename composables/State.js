@@ -22,22 +22,22 @@ const getPage = () => {
 }
 
 
-const movies = ref([]);
-const setMovies = (payload) => {
-    movies.value = payload
-}
-const getMovies = () => {
-    return movies;
-}
+// const movies = ref([]);
+// const setMovies = (payload) => {
+//     movies.value = payload
+// }
+// const getMovies = () => {
+//     return movies;
+// }
 
 
-const data = ref({});
-const setData = payload => {
-    data.value = payload;
-}
-const getData = () => {
-    return data;
-}
+// const data = ref({});
+// const setData = payload => {
+//     data.value = payload;
+// }
+// const getData = () => {
+//     return data;
+// }
 
 
 const genres = ref([]);
@@ -50,5 +50,5 @@ const getGenres = () => {
 
 
 export default {
-    setSearch, getSearch, getPage, setPage, setMovies, getMovies, setData, getData, setGenres, getGenres,
+    setSearch, getSearch, getPage, setPage, setGenres, getGenres,
 }

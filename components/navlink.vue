@@ -1,7 +1,7 @@
 <template>
-    <div @click="navigate" class="font-bold flex items-center gap-2 hover:bg-gray-100 p-2 mb-2 rounded-full hover:shadow-inner group ease-in-out duration-100 cursor-pointer">
+    <div @click="navigate" class="font-bold flex items-center gap-2 hover:bg-white p-2 mb-2 text-white hover:text-black rounded-full ease-in-out duration-75 cursor-pointer">
         <!-- <img :src="icon" width="30" height="30" class="group-hover:animate-spin"> -->
-        <Myicon :icon="icon" />
+        <!-- <Myicon :icon="icon" /> -->
         <span class="">{{ name }}</span>
     </div>
 </template>

@@ -13,4 +13,7 @@ export default defineNuxtConfig({
         // 'images': resolve(__dirname, './assets/images'),
         '@assets': resolve(__dirname, './assets'),
     },
+    plugins: [
+        // '@/plugins/vue-content-placeholders.js'
+    ]
 })

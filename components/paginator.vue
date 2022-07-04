@@ -37,7 +37,7 @@ const firstOrderPage = computed(() => {
 })
 
 const gotoPage = (pageNumber) => {
-    State.setPage(pageNumber);
+    // State.setPage(pageNumber);
     return navigateTo({
         query: {
             page: pageNumber

@@ -5,7 +5,8 @@
         </section>
         <section class="flex flex-col gap-10 items-center container mx-auto ">
             <div class="flex flex-wrap gap-4 justify-center">
-                <movie-card v-for="movie in movies" :key="movie.id" :movie="movie" />
+                <skeletons-skeleton-movie-card v-if="pending" v-for="i in 18" />
+                <movie-card v-else v-for="movie in data.results" :key="movie.id" :movie="movie" />
             </div>
             <paginator :currentPage="data.page" :totalPages="data.total_pages" />
         </section>
@@ -14,29 +15,38 @@
 
 
 <script setup>
-import api from '~~/composables/ApiService';
-import Filters from '~~/composables/Filters';
-import State from '~~/composables/State';
+import config from '~~/config';
 
 const route = useRoute();
 
-const data = ref(State.getData());
-const movies = ref(State.getMovies());
-
-onMounted(() => {
-    Filters.queryParams.set('page', route.query.page ?? 1)
-    api.fetchData();
+const queryParams = ref({
+    query: '',
+    page: route.query.page,
+    language: 'tr-TR'
 })
 
 
-watch(route, () => {
-    Filters.queryParams.set('page', route.query.page ?? 1)
-    api.fetchData();
+const { data, pending, refresh, error } = useLazyAsyncData('discover' + route.query.page, () => {
+    return $fetch(queryParams.value.query === '' ? config.endpoints.discover : config.endpoints.search, {
+        baseURL: config.api_base_url,
+        params: queryParams.value,
+        headers: config.headers,
+    })
 })
 
-watch(State.getSearch(), (now) => {
-    return api.fetchData();
+
+watch(() => route.query, (newVal) => {
+    queryParams.value.page = newVal.page
+    refresh()
 })
+watch(useState('search'), (newVal) => {
+    queryParams.value.query = newVal
+    refresh()
+})
+
+// watch(State.getSearch(), (now) => {
+//     return api.fetchData();
+// })
 
 
 </script>

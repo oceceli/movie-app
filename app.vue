@@ -7,13 +7,12 @@
 
 <script setup>
 import '@/assets/css/tailwind.css'
+import config from './config';
 
-
-import State from "@/composables/State"
 
 useHead({
   titleTemplate: (title) => {
-    return title ? `@oceceli | ${title}` : '@oceceli/movie-app'
+    return title ? `${config.app_name} | ${title}` : `${config.app_name}/movie-app`
   },
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
