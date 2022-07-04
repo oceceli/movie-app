@@ -7,7 +7,6 @@
 </template>
 
 <script setup>
-import Filters from "@/composables/Filters"
 
 const props = defineProps({
     icon: String,
@@ -16,7 +15,6 @@ const props = defineProps({
 });
 
 const navigate = () => {
-    // Filters.queryParams.set('query', '')
     return navigateTo({
         path: props.to,
     })

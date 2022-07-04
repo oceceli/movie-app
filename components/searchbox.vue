@@ -29,14 +29,14 @@ const clearField = () => {
 }
 
 watch(search, (now) => {
+    localStorage.setItem('search', now)
+    navigateTo('/');
     if(now.length > 0) {
-        // navigateTo('/');
         showClearButton.value = true
     } else {
         showClearButton.value = false
     }
     searchState.value = search.value;
-    // State.setSearch(now);
 })
 
 </script>

@@ -1,20 +1,18 @@
-import Filters from './Filters';
-import State from './State';
 import config from '~~/config';
 
 
-const fetchDynamic = (path, additionalQuery = '') => {
-    const target = config.api_base_url + path + '?' + Filters.queryParams + '&' + additionalQuery;
-    console.log('ApiService: ' + target)
-    return fetch(target, {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + config.api_token
-        },
-    })
-        .then(res => res.json())
-        .catch(err => console.error(err))
-}
+// const fetchDynamic = (path, additionalQuery = '') => {
+//     const target = config.api_base_url + path + '?' + Filters.queryParams + '&' + additionalQuery;
+//     console.log('ApiService: ' + target)
+//     return fetch(target, {
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer ' + config.api_token
+//         },
+//     })
+//         .then(res => res.json())
+//         .catch(err => console.error(err))
+// }
 
 // const performFetcha = (path, params = {}, callback = () => {}) => {
 //     if(callback instanceof Function) callback();
@@ -98,21 +96,21 @@ const getInTheater = () => {
 
 
 
-const fetchData = () => {
-    if (State.getSearch().value.length > 0)
-        getSearch().then(fullfillData)
-    else
-        getDiscoverMovies().then(fullfillData);
+// const fetchData = () => {
+//     if (State.getSearch().value.length > 0)
+//         getSearch().then(fullfillData)
+//     else
+//         getDiscoverMovies().then(fullfillData);
 
-}
-const fullfillData = (res) => {
-    State.setData(res)
-    State.setMovies(res.results)
-}
+// }
+// const fullfillData = (res) => {
+//     State.setData(res)
+//     State.setMovies(res.results)
+// }
 
 
 
 export default {
-    getDiscoverMovies, showMovie, getGenres, getSearch, fetchData, getLangs, getSimilarMovies,
+    getDiscoverMovies, showMovie, getGenres, getSearch, getLangs, getSimilarMovies,
 }
 

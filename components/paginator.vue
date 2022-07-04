@@ -19,11 +19,11 @@
                 <span class="font-bold">{{ currentPage }}.</span> sayfa görüntüleniyor
             </div>
         </div>
+        {{ currentPage }}
     </div>
 </template>
 
 <script setup>
-import State from '~~/composables/State';
 
 const props = defineProps({
     currentPage: Number,
@@ -37,7 +37,6 @@ const firstOrderPage = computed(() => {
 })
 
 const gotoPage = (pageNumber) => {
-    // State.setPage(pageNumber);
     return navigateTo({
         query: {
             page: pageNumber

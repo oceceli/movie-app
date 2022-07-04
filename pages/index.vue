@@ -41,12 +41,9 @@ watch(() => route.query, (newVal) => {
 })
 watch(useState('search'), (newVal) => {
     queryParams.value.query = newVal
+    queryParams.value.page = 1
     refresh()
 })
-
-// watch(State.getSearch(), (now) => {
-//     return api.fetchData();
-// })
 
 
 </script>
