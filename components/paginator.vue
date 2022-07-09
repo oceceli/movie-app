@@ -37,6 +37,7 @@ const firstOrderPage = computed(() => {
 })
 
 const gotoPage = (pageNumber) => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
     return navigateTo({
         query: {
             page: pageNumber

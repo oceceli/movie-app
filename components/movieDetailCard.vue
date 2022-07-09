@@ -70,7 +70,7 @@
             </div>
         </div>
     </section>
-    {{ reviews }}
+    <!-- {{ reviews }} -->
 </template>
 
 <script setup>
@@ -81,10 +81,7 @@ const props = defineProps({
 })
 
 
-const reviews = await apiService.performFetch('/movie/453395/reviews');
+// const reviews = await apiService.performFetch('/movie/453395/reviews');
+const reviews = await apiService.baseFetch('/movie/' + props.movie.id + '/reviews')
 
 </script>
-
-<style lang="scss" scoped>
-
-</style>

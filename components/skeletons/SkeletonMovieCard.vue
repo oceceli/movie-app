@@ -1,32 +1,22 @@
 <template>
-    <section class="px-6 border border-dashed rounded-md mx-auto mt-20 animate-pulse">
+    <section class="w-80 border border-dashed rounded-lg p-6 flex flex-col gap-6 animate-pulse">
 
-        <div class="flex items-center justify-center">
-            <div class="m-5 w-full h-28 rounded-xl bg-gray-300"></div>
+        <div class="flex items-center justify-center border bg-gray-300 rounded-lg h-36"></div>
+
+        <div class="px-10 flex flex-col items-center space-y-2">
+            <div class="w-32 bg-gray-300 h-5 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-5 rounded-md "></div>
         </div>
 
-        <div class="flex flex-row justify-center items-center space-x-5">
-            <!-- <div class="w-12 bg-gray-300 h-12 rounded-full ">
-            </div> -->
-            <div class="flex flex-col gap-5">
-                <div class="flex flex-col justify-center items-center space-y-3">
-                    <div class="w-36 bg-gray-300 h-6 rounded-md ">
-                    </div>
-                    <div class="w-24 bg-gray-300 h-6 rounded-md ">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col space-y-3 py-4 px-2">
-            <div class="w-full bg-gray-300 h-3 rounded-md ">
-            </div>
-            <div class="w-full bg-gray-300 h-3 rounded-md ">
-            </div>
-            <div class="w-full bg-gray-300 h-3 rounded-md ">
-            </div>
-            <div class="w-full bg-gray-300 h-3 rounded-md ">
-            </div>
+        <div class="flex flex-col space-y-3 border-t pt-6 px-5">
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
         </div>
 
     </section>

@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2 flex flex-col bg-white rounded border shadow-sm">
+    <div class="p-2 w-full flex flex-col bg-white rounded border shadow-sm">
         <div>
             <div class="text-lg font-semibold pb-1">Kategoriler</div>
             <select id="select-categories" class="focus:outline-none">

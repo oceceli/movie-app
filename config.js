@@ -10,6 +10,7 @@ export default {
         popular: "/movie/popular",
         top_rated: "/movie/top_rated",
         weekly_trend: "/trending/movie/week",
+        detail: "/movie/",
     },
     headers: {
         'Content-Type': 'application/json',

@@ -27,9 +27,9 @@
             <span class="text-xs text-gray-300 font-semibold">test</span>
         </div> -->
 
-        <NuxtLink :to="`/show/${movie.id}`" class="bg-black opacity-80 hover:opacity-100 rounded-b-xl p-2 flex items-center justify-center">
+        <div @click="goTo()" class="bg-black opacity-80 hover:opacity-100 rounded-b-xl p-2 flex items-center justify-center cursor-pointer">
             <span class="text-white text-lg font-bold">İncele</span>
-        </NuxtLink>
+        </div>
 
     </div>
 </template>
@@ -38,15 +38,15 @@
 import Helpers from '~~/composables/Helpers';
 
 const props = defineProps({
-    // id: Number,
-    // title: String,
-    // score: Number,
-    // img: String,
-    // overview: String,
-
     movie: Object,
 });
 
+const goTo = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+    return navigateTo({
+        path: `/show/${props.movie.id}`,
+    })
+}
 
     
 </script>

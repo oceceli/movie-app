@@ -1,5 +1,5 @@
 <template>
-    <div @click="navigate" class="font-bold flex items-center gap-2 hover:bg-white p-2 mb-2 text-white hover:text-black rounded-full ease-in-out duration-75 cursor-pointer">
+    <div @click="navigate" class="font-bold flex items-center gap-2 hover:bg-white p-2 mb-2 text-white hover:text-black rounded-lg ease-in-out duration-75 cursor-pointer">
         <!-- <img :src="icon" width="30" height="30" class="group-hover:animate-spin"> -->
         <!-- <Myicon :icon="icon" /> -->
         <span class="">{{ name }}</span>
@@ -15,6 +15,7 @@ const props = defineProps({
 });
 
 const navigate = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'})
     return navigateTo({
         path: props.to,
     })

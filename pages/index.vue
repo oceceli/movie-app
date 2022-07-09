@@ -1,15 +1,15 @@
 <template>
-    <div class="md:flex md:gap-2 mt-6">
-        <section class="w-3/12">
+    <div class="container mx-auto flex">
+        <section class="w-full">
             <filter-bar />
         </section>
-        <section class="flex flex-col gap-10 items-center container mx-auto ">
+        <div class="flex flex-col gap-10 items-center">
             <div class="flex flex-wrap gap-4 justify-center">
                 <skeletons-skeleton-movie-card v-if="pending" v-for="i in 18" />
                 <movie-card v-else v-for="movie in data.results" :key="movie.id" :movie="movie" />
             </div>
-            <paginator :currentPage="data.page" :totalPages="data.total_pages" />
-        </section>
+            <paginator v-if="!pending" :currentPage="data.page" :totalPages="data.total_pages" />
+        </div>
     </div>
 </template>
 
@@ -17,21 +17,35 @@
 <script setup>
 import config from '~~/config';
 
-const route = useRoute();
+const page = computed(() => {
+    return route.query?.page ?? 1;
+})
 
-const queryParams = ref({
-    query: '',
-    page: route.query.page,
-    language: 'tr-TR'
+onMounted(() => {
+    useHead({ title: '' })
 })
 
 
-const { data, pending, refresh, error } = useLazyAsyncData('discover' + route.query.page, () => {
-    return $fetch(queryParams.value.query === '' ? config.endpoints.discover : config.endpoints.search, {
-        baseURL: config.api_base_url,
-        params: queryParams.value,
-        headers: config.headers,
-    })
+const route = useRoute();
+
+const queryParams = ref({
+    query: "",
+    page: page.value,
+    language: 'tr-TR',
+    with_original_language: 'tr',
+    primary_release_year: 2022
+})
+
+
+
+const { data, pending, refresh, error } = await useLazyAsyncData('discover' + page.value, () => {
+    return apiService.baseFetch(queryParams.value.query === '' ? config.endpoints.discover : config.endpoints.search, { ...queryParams.value })
+})
+
+
+
+watch(data, (now) => {
+    console.log(now)
 })
 
 
