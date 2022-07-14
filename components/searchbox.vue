@@ -20,13 +20,6 @@ const showClearButton = ref(false)
 
 const searchState = useState('search', '')
 
-onBeforeMount(() => {
-    const localStorageSearch = localStorage.getItem('search')
-    if(localStorageSearch && localStorageSearch.length > 0) {
-        search.value = localStorage.getItem('search')
-        console.log("searchbox: " + search.value)
-    }
-})
 
 const clearField = () => {
     search.value = '';
@@ -46,21 +39,27 @@ const searchInput = debounce((event) => {
     search.value = event.target.value;
 })
 
+// watch(filters.getQueryParams(), (now) => {
+//     if(Object.keys(now).length > 0) {
+//         clearField()
+//     }
+// })
+
 watch(search, (now) => {
     action(now)
+    filters.reset();
 })
 
 const action = (newValue) => {
     searchState.value = newValue;
     window.scrollTo({top: 0, behavior: 'smooth'})
-    localStorage.setItem('search', newValue)
     if(newValue.length > 0) {
         showClearButton.value = true
     } else {
         showClearButton.value = false
         return navigateTo('/');
     }
-    navigateTo({ path: '/', query: { q: newValue }});
+    return navigateTo({ path: '/', query: { q: newValue }});
 }
 
 

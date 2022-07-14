@@ -8,7 +8,7 @@
             <div class="w-full bg-gray-300 h-5 rounded-md "></div>
         </div>
 
-        <div class="flex flex-col space-y-3 border-t pt-6 px-5">
+        <div class="flex flex-col items-center space-y-3 border-t pt-6 px-5">
             <div class="w-full bg-gray-300 h-4 rounded-md "></div>
             <div class="w-full bg-gray-300 h-4 rounded-md "></div>
             <div class="w-full bg-gray-300 h-4 rounded-md "></div>
@@ -16,7 +16,7 @@
             <div class="w-full bg-gray-300 h-4 rounded-md "></div>
             <div class="w-full bg-gray-300 h-4 rounded-md "></div>
             <div class="w-full bg-gray-300 h-4 rounded-md "></div>
-            <div class="w-full bg-gray-300 h-4 rounded-md "></div>
+            <div class="w-44 bg-gray-300 h-4 rounded-md "></div>
         </div>
 
     </section>
