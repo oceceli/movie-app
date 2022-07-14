@@ -10,6 +10,7 @@ import '@/assets/css/tailwind.css'
 import config from './config';
 
 
+
 useHead({
   titleTemplate: (title) => {
     return title ? `${config.app_name} | ${title}` : `${config.app_name}/movie-app`

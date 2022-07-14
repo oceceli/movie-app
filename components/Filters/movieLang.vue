@@ -18,12 +18,11 @@ onMounted(() => {
         selected.value = filters.getQueryParams().value.with_original_language
 })
 
-const { data, pending } = useLazyAsyncData('movie_lang', () => {
+const { data, pending } = useLazyAsyncData('movie_lang' + filters.getQueryParams().value.language, () => {
     return apiService.baseFetch(config.endpoints.movie_lang)
 })
 
 watch(selected, () => {
-    console.log(selected.value)
     filters.setQueryParams({ ...filters.getQueryParams().value, with_original_language: selected.value })
 })
 

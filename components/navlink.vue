@@ -15,7 +15,6 @@ const props = defineProps({
 });
 
 const navigate = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
     return navigateTo({
         path: props.to,
     })

@@ -25,7 +25,6 @@ onMounted(() => {
 
 
 watch(selected, () => {
-    console.log(selected.value)
     filters.setQueryParams({ ...filters.getQueryParams().value, year: selected.value })
 })
 

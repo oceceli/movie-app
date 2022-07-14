@@ -1,63 +1,30 @@
 <template>
-    <div class="container mx-auto flex flex-col lg:flex-row gap-4">
-        <section class="w-full">
-            <filter-bar />
-        </section>
-        <section class="flex flex-col gap-10 items-center">
-            <div class="flex flex-wrap gap-4 justify-center">
-                <skeletons-skeleton-movie-card v-if="pending" v-for="i in 18" />
-                <movie-card v-else v-for="movie in data.results" :key="movie.id" :movie="movie" />
-            </div>
-            <paginator v-if="!pending" :currentPage="data.page" :totalPages="data.total_pages" />
-        </section>
-    </div>
+    <section class="container mx-auto mb-28 mt-8 overflow-x-hidden p-4">
+        <div class="flex flex-col gap-20">
+            <presets-template v-if="!now_playing_loading" :movies="now_playing.results" :loading="now_playing_loading" title="Sinemalarda" />
+            <presets-template v-if="!weekly_trend_loading" :movies="weekly_trend.results" :loading="weekly_trend_loading" title="Haftanın Trendleri" />
+            <presets-template v-if="!top_rated_loading" :movies="top_rated.results" :loading="top_rated_loading" title="Tüm Zamanların En İyileri" />
+        </div>
+    </section>
 </template>
-
 
 <script setup>
 import config from '~~/config';
-
-const page = computed(() => {
-    return route.query?.page ?? 1;
-})
 
 onMounted(() => {
     useHead({ title: '' })
 })
 
-
-const route = useRoute();
-
-const params = ref({
-    query: "",
-    page: page.value,
+const { data: now_playing, pending: now_playing_loading } = await useLazyAsyncData('now_playing', () => {
+    return apiService.baseFetch(config.endpoints.now_playing);
 })
 
-
-
-const { data, pending, refresh, error } = await useLazyAsyncData('discover' + page.value, () => {
-    return apiService.baseFetch(params.value.query === '' ? config.endpoints.discover : config.endpoints.search, { ...params.value })
+const { data: weekly_trend, pending: weekly_trend_loading } = await useLazyAsyncData('weekly_trend', () => {
+    return apiService.baseFetch(config.endpoints.weekly_trend);
 })
 
-
-
-// watch(data, (now) => {
-//     console.log(now)
-// })
-
-
-watch(() => route.query, (newVal) => {
-    params.value.page = newVal.page
-    refresh()
-})
-watch(useState('search'), (newVal) => {
-    params.value.query = newVal
-    params.value.page = 1
-    refresh()
-})
-watch(filters.getQueryParams(), () => {
-    params.value.page = 1
-    refresh()
+const { data:top_rated, pending:top_rated_loading } = await useLazyAsyncData('top_rated', () => {
+    return apiService.baseFetch(config.endpoints.top_rated);
 })
 
 </script>

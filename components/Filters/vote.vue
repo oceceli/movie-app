@@ -14,7 +14,7 @@ const selected = ref();
 const votes = ref([]);
 
 onMounted(() => {
-    for (let i = 10; i >= 0; i--) {
+    for (let i = 0; i <= 10; i++) {
         votes.value.push(i)
     }
     if (filters.getQueryParams().value["vote_average.gte"])
@@ -24,7 +24,6 @@ onMounted(() => {
 
 
 watch(selected, () => {
-    // console.log(selected.value)
     filters.setQueryParams({ ...filters.getQueryParams().value, "vote_average.gte": selected.value })
 })
 

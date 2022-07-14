@@ -11,7 +11,8 @@ export default {
         weekly_trend: "/trending/movie/week",
         detail: "/movie/",
         genres: "/genre/movie/list",
-        movie_lang: "/configuration/languages"
+        movie_lang: "/configuration/languages",
+        now_playing: "/movie/now_playing",
     },
     headers: {
         'Content-Type': 'application/json',

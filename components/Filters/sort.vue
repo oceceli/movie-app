@@ -11,16 +11,16 @@
 
 const selected = ref("popularity.desc");
 const sortOptions = ref([
-    {id: "popularity.asc", name: "Popularite(Artan)"},
     {id: "popularity.desc", name: "Popularite(Azalan)"},
-    {id: "release_date.asc", name: "Çıkış Tarihi(Artan)"},
+    {id: "popularity.asc", name: "Popularite(Artan)"},
     {id: "release_date.desc", name: "Çıkış Tarihi(Azalan)"},
-    {id: "revenue.asc", name: "Hasılat(Artan)"},
+    {id: "release_date.asc", name: "Çıkış Tarihi(Artan)"},
     {id: "revenue.desc", name: "Hasılat(Azalan)"},
-    {id: "original_title.asc", name: "Film Adı(Artan)"},
+    {id: "revenue.asc", name: "Hasılat(Artan)"},
     {id: "original_title.desc", name: "Film Adı(Azalan)"},
-    {id: "vote_average.asc", name: "Puan(Artan)"},
+    {id: "original_title.asc", name: "Film Adı(Artan)"},
     {id: "vote_average.desc", name: "Puan(Azalan)"},
+    {id: "vote_average.asc", name: "Puan(Artan)"},
 ]);
 
 onMounted(() => {
@@ -29,7 +29,6 @@ onMounted(() => {
 })
 
 watch(selected, () => {
-    console.log(selected.value)
     filters.setQueryParams({ ...filters.getQueryParams().value, sort_by: selected.value })
 })
 

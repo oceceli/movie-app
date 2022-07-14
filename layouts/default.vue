@@ -6,10 +6,12 @@
     <div class="flex-1">
       <slot />
     </div>
+    <MyFooter />
   </div>
 </template>
 
 <script setup>
 import topbar from "./topbar.vue"
+import MyFooter from "./myFooter.vue";
 
 </script>

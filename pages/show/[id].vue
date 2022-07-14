@@ -66,5 +66,7 @@ const { data: similarMovies, pending: pendingSimilar } = await useLazyAsyncData(
 watch(movie, (now) => {
     useHead({ title: now.title })
 })
-
+watch(filters.getQueryParams(), () => {
+    refresh()
+})
 </script>

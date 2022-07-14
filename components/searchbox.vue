@@ -39,11 +39,6 @@ const searchInput = debounce((event) => {
     search.value = event.target.value;
 })
 
-// watch(filters.getQueryParams(), (now) => {
-//     if(Object.keys(now).length > 0) {
-//         clearField()
-//     }
-// })
 
 watch(search, (now) => {
     action(now)
@@ -52,14 +47,13 @@ watch(search, (now) => {
 
 const action = (newValue) => {
     searchState.value = newValue;
-    window.scrollTo({top: 0, behavior: 'smooth'})
     if(newValue.length > 0) {
         showClearButton.value = true
     } else {
         showClearButton.value = false
-        return navigateTo('/');
+        return navigateTo('/discover');
     }
-    return navigateTo({ path: '/', query: { q: newValue }});
+    return navigateTo({ path: '/discover', query: { q: newValue }});
 }
 
 

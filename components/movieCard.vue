@@ -42,7 +42,6 @@ const props = defineProps({
 });
 
 const goTo = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'})
     return navigateTo({
         path: `/show/${props.movie.id}`,
     })
