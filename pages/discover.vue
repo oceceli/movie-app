@@ -2,7 +2,7 @@
     <div class="container mx-auto flex flex-col flex-initial lg:flex-row gap-4">
         <section class="lg:basis-1/4 w-full">
             <filter-bar class="group ease-in-out duration-150">
-                <div class="rounded-b-md rounded-lg backdrop-blur mt-12 opacity-95 shadow border p-4 flex justify-center bg-gradient-to-r from-lime-100 via-purple-100 to-sky-100 invisible group-hover:visible animate-bounce hover:animate-none">
+                <div class="rounded-b-md rounded-lg backdrop-blur mt-12 opacity-95 shadow border p-4 flex justify-center bg-gradient-to-r from-lime-100 via-purple-100 to-sky-100 md:animate-bounce hover:animate-none">
                     <span class="text-slate-800 font-semibold flex flex-col items-center gap-3">
                         <a class="flex items-center gap-2 hover:text-slate-400" target="_blank" href="https://www.linkedin.com/in/oceceli/">
                             <myicon icon="linkedin.svg" />
