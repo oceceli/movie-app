@@ -3,7 +3,7 @@ import config from '~~/config';
 const baseFetch = (fetchPath, params = {}) => {
     return $fetch(fetchPath, {
         baseURL: config.api_base_url,
-        params: {...params, ...filters.getQueryParams().value, language: useCookie('lang').value, include_adult: false},
+        params: {...params, ...filters.getQueryParams().value, language: useCookie('lang').value ?? 'tr-TR', include_adult: false},
         headers: config.headers,
     })
 }

@@ -1,11 +1,11 @@
 <template>
     <section class="relative group">
         <div class="md:flex gap-2 bg-gray-100 shadow rounded-xl">
-            <div class="">
+            <div class="md:basis-3/12">
                 <img :src="'https://image.tmdb.org/t/p/w500/' + movie.backdrop_path" alt=""
                     class="md:rounded-l-xl md:rounded-tr-none rounded-t-xl object-cover h-full w-full">
             </div>
-            <div class="p-4 flex flex-col gap-4">
+            <div class="md:basis-9/12 p-4 flex flex-col gap-4">
                 <div class="">
                     <span>Orijinal:</span>
                     <div class="inline-flex items-center ">

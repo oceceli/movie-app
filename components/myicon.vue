@@ -11,6 +11,6 @@
     });
 
     const iconPath = computed(() => {
-        return `/public/icon/${props.icon}`;
+        return `/icon/${props.icon}`;
     });
 </script>

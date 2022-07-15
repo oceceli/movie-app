@@ -10,7 +10,7 @@
 <script setup>
 
 onBeforeMount(() => {
-    selected.value = langCook.value
+    selected.value = langCook.value ?? 'tr-TR'
 })
 
 const selected = ref()
