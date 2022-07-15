@@ -1,5 +1,14 @@
 # Nuxt 3 Movie App Install
 
+## Firstly
+You'll need a themoviedb api key. 
+
+When you acquire the key, rename keys.example.json and place it in the root directory with filename
+```
+keys.json
+```
+
+
 ## Setup
 
 Make sure to install the dependencies:
