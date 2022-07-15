@@ -5,7 +5,7 @@ You'll need a themoviedb api key.
 
 When you acquire the key, rename keys.example.json and place it in the root directory with filename
 ```
-keys.json
+/keys.json
 ```
 
 
@@ -44,6 +44,13 @@ Locally preview production build:
 
 ```bash
 npm run preview
+```
+
+## Docker
+The image output will be ~70mb in size
+```bash
+docker image build --tag movie-app .
+docker container run -d -p 3000:3000 movie-app:latest
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
