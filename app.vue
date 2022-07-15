@@ -9,7 +9,7 @@
 import '@/assets/css/tailwind.css'
 import config from './config';
 
-
+const route = useRoute();
 
 useHead({
   titleTemplate: (title) => {

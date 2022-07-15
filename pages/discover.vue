@@ -1,16 +1,16 @@
 <template>
     <div class="container mx-auto flex flex-col flex-initial lg:flex-row gap-4">
-        <section class="w-full max-w-xs">
-            <filter-bar>
-                <div class="rounded-md mt-6 p-4 flex justify-center border-t">
-                    <span class="text-slate-800 font-semibold flex flex-col items-center">
+        <section class="lg:basis-1/4 w-full">
+            <filter-bar class="group ease-in-out duration-150">
+                <div class="rounded-b-md rounded-lg backdrop-blur mt-8 opacity-95 shadow border p-4 flex justify-center bg-gradient-to-r from-lime-100 via-purple-100 to-sky-100 invisible group-hover:visible animate-bounce hover:animate-none">
+                    <span class="text-slate-800 font-semibold flex flex-col items-center gap-3">
                         <a class="flex items-center gap-2 hover:text-slate-400" target="_blank" href="https://www.linkedin.com/in/oceceli/">
                             <myicon icon="linkedin.svg" />
-                            oceceli
+                            linkedin.com/in/oceceli/
                         </a>
                         <a class="flex items-center gap-2 hover:text-slate-400" target="_blank" href="https://github.com/oceceli">
                             <myicon icon="github.svg" />
-                            oceceli
+                            github.com/oceceli
                         </a>
                         <a class="flex items-center gap-2 hover:text-slate-400" href="mailto:oceceli@hotmail.com">
                             <myicon icon="mail.svg" />
@@ -20,7 +20,7 @@
                 </div>
             </filter-bar>
         </section>
-        <section class="flex flex-col gap-10 items-center">
+        <section class="lg:basis-3/4 flex flex-col gap-10 items-center">
             <div class="flex flex-wrap gap-4 justify-center">
                 <skeletons-skeleton-movie-card v-if="pending" v-for="i in 18" />
                 <movie-card v-else v-for="movie in data.results" :key="movie.id" :movie="movie" />
@@ -53,7 +53,7 @@ const params = ref({
 
 
 
-const { data, pending, refresh } = await useLazyAsyncData('discover' + filters.getQueryParams().value.language + page.value, () => {
+const { data, pending, refresh, error } = await useLazyAsyncData('discover' + page.value, () => {
     return apiService.baseFetch(params.value.query === '' ? config.endpoints.discover : config.endpoints.search, { ...params.value })
 })
 
@@ -66,11 +66,16 @@ const checkSearch = () => {
     }
 }
 
+watch(error, (err) => {
+    console.error(err)
+})
+
 watch(() => route.query, (newVal) => {
     params.value.page = newVal.page
     refresh()
 })
-watch(useState('search'), (newVal) => {
+watch(useState('search'), (now) => {
+    if(now == '') params.value.query = ""
     checkSearch()
 })
 watch(filters.getQueryParams(), () => {

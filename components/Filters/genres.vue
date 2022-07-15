@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="text-lg font-semibold pb-1">Kategoriler</div>
-        <select v-model="selected" v-if="!genresLoading" id="select-categories" class="focus:outline-none w-full overscroll-contain"
+        <select v-model="selected" v-if="!genresLoading" id="select-categories" class="focus:outline-none w-full overscroll-contain lg:h-72"
             multiple>
             <option v-for="genre in data.genres" :key="genre.id" :value="genre.id">{{ genre.name }}</option>
         </select>
@@ -18,7 +18,7 @@ onMounted(() => {
         selected.value = filters.getQueryParams().value.with_genres.split(',').map(Number)
 })
 
-const { data, pending: genresLoading, refresh } = useLazyAsyncData('genres' + filters.getQueryParams().value.language, () => {
+const { data, pending: genresLoading, refresh } = useLazyAsyncData('genres', () => {
     return apiService.baseFetch(config.endpoints.genres)
 })
 

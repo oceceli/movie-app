@@ -13,7 +13,7 @@
                 <filters-year /><hr>
                 <movieLang />
             </div>
-            <div v-if="disabled" class="absolute top-0 bottom-0 right-0 left-0 bg-gray-100 rounded-md opacity-50">
+            <div v-if="disabled" class="absolute inset-0 bg-gray-100 rounded-md opacity-50">
             </div>
         </div>
         <slot/>

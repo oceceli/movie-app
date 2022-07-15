@@ -59,7 +59,7 @@ const { data: movie, pending: pendingMovie, refresh, error } = await useLazyAsyn
     return apiService.baseFetch(config.endpoints.detail + movieID)
 })
 
-const { data: similarMovies, pending: pendingSimilar } = await useLazyAsyncData('similar-movies:' + movieID, () => {
+const { data: similarMovies, pending: pendingSimilar, refresh: refreshSimilar } = await useLazyAsyncData('similar-movies:' + movieID, () => {
     return apiService.baseFetch(`/movie/${movieID}/similar`)
 })
 
@@ -68,5 +68,6 @@ watch(movie, (now) => {
 })
 watch(filters.getQueryParams(), () => {
     refresh()
+    refreshSimilar()
 })
 </script>
