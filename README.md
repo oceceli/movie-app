@@ -1,28 +1,20 @@
 # Nuxt 3 Movie App Install
 
 ## Firstly
-You'll need a themoviedb api key. 
+You'll need a themoviedb API key. 
 
-When you acquire the key, rename keys.example.json and place it in the root directory with filename
+When you acquire the key, rename .env.example to .env and place it in the root directory with filename
 ```
-/keys.json
+/.env
+API_TOKEN=<Your token>
 ```
-
-
-## Setup
+<br/>
 
 Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
+npm install
+```
+
 
 ## Development Server
 
@@ -47,10 +39,10 @@ npm run preview
 ```
 
 ## Docker
+Enter your API key in the Dockerfile
+
 The image output will be ~70mb in size
 ```bash
 docker image build --tag movie-app .
-docker container run -d -p 3000:3000 movie-app:latest
+docker container run -d -p 3000:3000 movie-app
 ```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
