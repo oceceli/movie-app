@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="text-lg font-semibold pb-1">Kategoriler</div>
-        <select v-model="selected" v-if="!genresLoading" id="select-categories" class="focus:outline-none w-full overscroll-contain lg:h-72"
+        <select v-model="selected" v-if="!genresLoading" id="select-categories" class="focus:outline-none w-full overscroll-contain"
             multiple>
             <option v-for="genre in data.genres" :key="genre.id" :value="genre.id">{{ genre.name }}</option>
         </select>
@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import config from '~~/config';
+import { ENDPOINTS } from '@/data/consts'
 
 const selected = ref([]);
 
@@ -19,7 +19,7 @@ onMounted(() => {
 })
 
 const { data, pending: genresLoading, refresh } = useLazyAsyncData('genres', () => {
-    return apiService.baseFetch(config.endpoints.genres)
+    return apiService.baseFetch(ENDPOINTS.genres)
 })
 
 watch(selected, () => {

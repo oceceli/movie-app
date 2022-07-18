@@ -32,7 +32,7 @@
 
 
 <script setup>
-import config from '~~/config';
+import { ENDPOINTS } from '@/data/consts'
 
 const page = computed(() => {
     return route.query?.page ?? 1;
@@ -54,9 +54,10 @@ const params = ref({
 
 
 const { data, pending, refresh, error } = await useLazyAsyncData('discover' + page.value, () => {
-    return apiService.baseFetch(params.value.query === '' ? config.endpoints.discover : config.endpoints.search, { ...params.value })
+    return apiService.baseFetch(params.value.query === '' ? ENDPOINTS.discover : ENDPOINTS.search, { ...params.value })
 })
 
+// const { data, pending, refresh, error } = apiService.baseFetch(params.value.query === '' ? ENDPOINTS.discover : ENDPOINTS.search, { ...params.value })
 
 const checkSearch = () => {
     if (useState('search').value) {

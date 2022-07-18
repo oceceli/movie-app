@@ -9,24 +9,27 @@
 </template>
 
 <script setup>
-import config from '~~/config';
+import { ENDPOINTS } from '@/data/consts'
 
 onMounted(() => {
     useHead({ title: '' })
 })
 
+
 const { data: now_playing, pending: now_playing_loading, refresh: rNowPlaying } = await useLazyAsyncData('now_playing', () => {
-    return apiService.baseFetch(config.endpoints.now_playing);
+    return apiService.baseFetch(ENDPOINTS.now_playing);
 })
+// const { data: now_playing, pending: now_playing_loading, refresh: rNowPlaying } = await apiService.baseFetch(ENDPOINTS.now_playing);
 
 const { data: weekly_trend, pending: weekly_trend_loading, refresh: rWeeklyTrend } = await useLazyAsyncData('weekly_trend', () => {
-    return apiService.baseFetch(config.endpoints.weekly_trend);
+    return apiService.baseFetch(ENDPOINTS.weekly_trend);
 })
+// const { data: weekly_trend, pending: weekly_trend_loading, refresh: rWeeklyTrend } = await apiService.baseFetch(ENDPOINTS.weekly_trend);
 
 const { data:top_rated, pending:top_rated_loading, refresh: rTopRated } = await useLazyAsyncData('top_rated', () => {
-    return apiService.baseFetch(config.endpoints.top_rated);
+    return apiService.baseFetch(ENDPOINTS.top_rated);
 })
-
+// const { data:top_rated, pending:top_rated_loading, refresh: rTopRated } = await apiService.baseFetch(ENDPOINTS.top_rated);
 
 watch(filters.getQueryParams(), () => {
     rNowPlaying()

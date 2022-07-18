@@ -1,20 +1,16 @@
-import config from '~~/config';
+import { API_BASE_URL } from '~~/data/consts'
 
 const baseFetch = (fetchPath, params = {}) => {
     return $fetch(fetchPath, {
-        baseURL: config.api_base_url,
-        params: {...params, ...filters.getQueryParams().value, language: useCookie('lang').value ?? 'tr-TR', include_adult: false},
-        headers: config.headers,
+        baseURL: API_BASE_URL,
+        params: { ...params, ...filters.getQueryParams().value, language: useCookie('lang').value ?? 'tr-TR', include_adult: false },
+        headers: {
+            'Authorization': 'Bearer ' + useRuntimeConfig().API_TOKEN
+        },
     })
+
 }
-
-// kullanılmadı
-// const getReviews = (movieID) => {
-//     return fetchDynamic(`/movie/${movieID}/reviews`)
-// }
-
 
 export default {
     baseFetch
 }
-

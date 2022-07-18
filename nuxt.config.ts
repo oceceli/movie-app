@@ -18,4 +18,10 @@ export default defineNuxtConfig({
     plugins: [
         // '@/plugins/vue-content-placeholders.js'
     ],
+    runtimeConfig: {
+        public: {
+            API_TOKEN: process.env.API_TOKEN,
+        }
+    },
+
 })

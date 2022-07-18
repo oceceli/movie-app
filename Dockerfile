@@ -1,8 +1,12 @@
 FROM alpine:3.16 as builder
 WORKDIR /app
 COPY . .
-RUN apk add npm && npm install
-RUN npm run build
+
+# API TOKEN
+ENV API_TOKEN=ENTER_YOUR_API_TOKEN_HERE
+
+# install & build
+RUN apk add npm && npm install && npm run build
 
 
 FROM alpine:3.16

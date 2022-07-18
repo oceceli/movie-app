@@ -51,12 +51,13 @@
 </template>
 
 <script setup>
-import config from '~~/config';
+import { ENDPOINTS } from '@/data/consts'
+
 const route = useRoute();
 
 const movieID = route.params.id;
-const { data: movie, pending: pendingMovie, refresh, error } = await useLazyAsyncData('movie:' + movieID, () => {
-    return apiService.baseFetch(config.endpoints.detail + movieID)
+const { data: movie, pending: pendingMovie, refresh, error } = await useLazyAsyncData('movieID:' + movieID, () => {
+    return apiService.baseFetch(ENDPOINTS.detail + movieID)
 })
 
 const { data: similarMovies, pending: pendingSimilar, refresh: refreshSimilar } = await useLazyAsyncData('similar-movies:' + movieID, () => {

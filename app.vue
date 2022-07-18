@@ -7,13 +7,13 @@
 
 <script setup>
 import '@/assets/css/tailwind.css'
-import config from './config';
+import { APP_NAME } from './data/consts';
 
 const route = useRoute();
 
 useHead({
   titleTemplate: (title) => {
-    return title ? `${config.app_name} | ${title}` : `${config.app_name}/movie-app`
+    return title ? `${APP_NAME} | ${title}` : `${APP_NAME}/movie-app`
   },
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',

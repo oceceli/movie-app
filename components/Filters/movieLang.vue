@@ -9,7 +9,8 @@
 </template>
 
 <script setup>
-import config from '~~/config';
+import { ENDPOINTS } from '@/data/consts'
+
 
 const selected = ref([]);
 
@@ -19,7 +20,7 @@ onMounted(() => {
 })
 
 const { data, pending } = useLazyAsyncData('movie_lang', () => {
-    return apiService.baseFetch(config.endpoints.movie_lang)
+    return apiService.baseFetch(ENDPOINTS.movie_lang)
 })
 
 watch(selected, () => {

@@ -75,13 +75,12 @@
 
 <script setup>
 import Helpers from '~~/composables/Helpers';
-import config from '~~/config';
 const props = defineProps({
     movie: Object,
 })
 
 
 // const reviews = await apiService.performFetch('/movie/453395/reviews');
-const reviews = await apiService.baseFetch('/movie/' + props.movie.id + '/reviews')
+// const reviews = await apiService.baseFetch('/movie/' + props.movie.id + '/reviews')
 
 </script>
