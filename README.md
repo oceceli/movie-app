@@ -1,4 +1,8 @@
-# Nuxt 3 Movie App Install
+## DEMO
+https://movie-app-67l4.onrender.com/discover
+
+
+# Installation
 
 ## Firstly
 You'll need a themoviedb API key. 
