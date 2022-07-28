@@ -1,5 +1,5 @@
 ## DEMO
-https://movie-app-67l4.onrender.com/discover
+https://movie-app.oceceli.com/discover
 
 
 # Installation
