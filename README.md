@@ -1,5 +1,5 @@
 ## DEMO
-https://movie-app.oceceli.com/discover
+movie-app.oceceli.com/discover
 
 
 # Installation
